@@ -20,43 +20,51 @@
                 <asp:TemplateField HeaderText="ID" Visible="True">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                     <ItemTemplate>
-                        <asp:Label ID="ProductID" runat="server" 
-                            Text='<%# Eval("ProductID") %>'></asp:Label>
+                        <asp:Label ID="TeamID" runat="server" 
+                            Text='<%# Eval("TeamID") %>'></asp:Label>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Product">
+                <asp:TemplateField HeaderText="Team">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                     <ItemTemplate>
                         <%-- this is where your reference to the data on your
                               record is placed--%>
-                        <asp:Label ID="ProductName" runat="server" 
-                            Text='<%# Eval("ProductName") %>'></asp:Label>
+                        <asp:Label ID="TeamName" runat="server" 
+                            Text='<%# Eval("TeamName") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Qty/Per">
+                <asp:TemplateField HeaderText="Coach">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                      <ItemTemplate>
-                        <asp:Label ID="QuantityPerUnit" runat="server" 
-                            Text='<%# Eval("QuantityPerUnit") == null ? "each" : Eval("QuantityPerUnit") %>'></asp:Label>
+                        <asp:Label ID="Coach" runat="server" 
+                            Text='<%# Eval("Coach") %>'></asp:Label>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Price ($)">
-                    <HeaderStyle HorizontalAlign="Right"></HeaderStyle>
+                <asp:TemplateField HeaderText="AssistantCoach">
+                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                     <ItemTemplate>
+                        <asp:Label ID="AssistantCoach" runat="server" 
+                            Text='<%# Eval("AssistantCoach") %>'></asp:Label>
+                        
+                    </ItemTemplate>
+                </asp:TemplateField>
 
+                <asp:TemplateField HeaderText="Wins">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                      <ItemTemplate>
-                        <asp:Label ID="UnitPrice" runat="server" 
-                            Text='<%# string.Format("{0:0.00}",Eval("UnitPrice"))%>'></asp:Label>
+                        <asp:Label ID="Wins" runat="server" 
+                            Text='<%# Eval("Wins") == null ? "each" : Eval("Wins") %>'></asp:Label>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Disc">
+                <asp:TemplateField HeaderText="Losses">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                      <ItemTemplate>
-                         <asp:CheckBox ID="Discontinued" runat="server" 
-                              Checked='<%# Eval("Discontinued") %>'/>
+                        <asp:Label ID="Losses" runat="server" 
+                            Text='<%# Eval("Losses") == null ? "each" : Eval("Losses") %>'></asp:Label>
+                        
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

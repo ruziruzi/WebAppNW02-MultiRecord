@@ -60,6 +60,7 @@ namespace WebApp.ExercisePages
                 {
                     MessageLabel.Text = ex.Message;
                 }
+                
             }
         }
     }

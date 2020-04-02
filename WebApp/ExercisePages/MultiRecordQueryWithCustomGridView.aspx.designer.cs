@@ -51,6 +51,15 @@ namespace WebApp.ExercisePages
         protected global::System.Web.UI.WebControls.Label MessageLabel;
 
         /// <summary>
+        /// TeamInfoLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TeamInfoLabel;
+
+        /// <summary>
         /// TeamInfo control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace WebApp.ExercisePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView TeamInfo;
+
+        /// <summary>
+        /// RosterLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RosterLabel;
 
         /// <summary>
         /// List02 control.

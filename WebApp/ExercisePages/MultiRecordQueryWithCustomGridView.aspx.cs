@@ -56,6 +56,7 @@ namespace WebApp.ExercisePages
                     ////info.Sort((x, y) => x.ProductName.CompareTo(y.ProductName));
                     //TeamInfo.DataSource = Teaminfo;
                     //TeamInfo.DataBind();
+                    TeamInfoLabel.Text = "Team Information";
                     Controller01 Teamsysmgr = new Controller01();
                     List<Entity01> Teaminfo = null;
                     Teaminfo = Teamsysmgr.FindByID(int.Parse(List01.SelectedValue));
@@ -63,15 +64,19 @@ namespace WebApp.ExercisePages
                     TeamInfo.DataSource = Teaminfo;
                     TeamInfo.DataBind();
 
+                    RosterLabel.Text = "Team Roster";
                     Controller02 sysmgr = new Controller02();
                     List<Entity02> info = null;
                     info = sysmgr.FindByID(int.Parse(List01.SelectedValue));
+                    info.Sort((x,y) => x.PlayerName.CompareTo(y.PlayerName));
                     //info.Sort((x, y) => x.ProductName.CompareTo(y.ProductName));
                     List02.DataSource = info;
                     List02.DataBind();
                 }
                 catch (Exception ex)
                 {
+                    TeamInfoLabel.Text = "";
+                    RosterLabel.Text = "";
                     MessageLabel.Text = ex.Message;
                 }
             }

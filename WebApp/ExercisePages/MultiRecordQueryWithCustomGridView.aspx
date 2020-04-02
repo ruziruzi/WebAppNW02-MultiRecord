@@ -9,7 +9,60 @@
         <br /><br />
         <asp:Label ID="MessageLabel" runat="server" ></asp:Label>
         <br />
-        <asp:GridView ID="TeamInfo" runat="server"></asp:GridView>
+        
+        <asp:Label ID="TeamInfoLabel" runat="server" Font-Size="XX-Large" Width="100%" CssClass="text-center"></asp:Label>
+        <asp:GridView ID="TeamInfo" runat="server"
+            AutoGenerateColumns="False"
+            CssClass="table table-striped" GridLines="Horizontal"
+            BorderStyle="None">
+
+      
+            
+            <Columns>
+
+
+                <asp:TemplateField HeaderText="Coach" Visible="True">
+                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                    <ItemTemplate>
+                        <asp:Label ID="Coach" runat="server" 
+                            Text='<%# Eval("Coach") %>'></asp:Label>
+                        
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Assistant Coach" Visible="True">
+                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                    <ItemTemplate>
+                        <asp:Label ID="AssistantCoach" runat="server" 
+                            Text='<%# Eval("AssistantCoach") %>'></asp:Label>
+                        
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Wins" Visible="True">
+                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                    <ItemTemplate>
+                        <asp:Label ID="Wins" runat="server" 
+                            Text='<%# Eval("Wins") == null ? "N/A" : Eval("Wins") %>'></asp:Label>
+                        
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Losses" Visible="True">
+                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                    <ItemTemplate>
+                        <asp:Label ID="Losses" runat="server" 
+                            Text='<%# Eval("Losses") == null ? "N/A" : Eval("Losses") %>'></asp:Label>
+                        
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+            </Columns>
+
+        </asp:GridView>
+        
+        <br /><br />
+        <asp:Label ID="RosterLabel" runat="server" Font-Size="XX-Large" Width="100%" CssClass="text-center"></asp:Label>
         <asp:GridView ID="List02" runat="server" 
             AutoGenerateColumns="False"
              CssClass="table table-striped" GridLines="Horizontal"

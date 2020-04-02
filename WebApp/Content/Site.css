@@ -1,4 +1,6 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿
+
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -18,6 +20,10 @@ textarea {
     max-width: 280px;
 }
 
+align-center{
+    text-align:center;
+    background-color:red;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

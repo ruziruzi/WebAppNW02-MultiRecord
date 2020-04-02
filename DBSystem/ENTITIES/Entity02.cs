@@ -12,14 +12,27 @@ namespace DBSystem.ENTITIES
     [Table("Player")]
     public class Entity02
     {
+        private string gender;
         [Key]
         //public int PlayerID { get; set; }
         //public int GuardianID { get; set; }
         //public int TeamID { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string LastName { get; set;}
         public int Age { get; set; }
-        public string Gender { get; set; }
+        public string Gender { 
+            get { return gender; } 
+            set {
+                if (value == "M")
+                {
+                    gender = "Male";
+                }
+                else
+                {
+                    gender = "Female";
+                }
+            } 
+        }
         //public string AlbertaHealthCareNumber { get; set; }
         public string MedicalAlertDetails { get; set; }
         [NotMapped]

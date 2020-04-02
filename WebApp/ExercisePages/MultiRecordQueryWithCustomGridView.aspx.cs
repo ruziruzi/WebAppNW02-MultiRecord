@@ -33,6 +33,7 @@ namespace WebApp.ExercisePages
                 List01.DataValueField = nameof(Entity01.TeamID);
                 List01.DataBind();
                 List01.Items.Insert(0, "select...");
+                
             }
             catch (Exception ex)
             {
@@ -43,12 +44,25 @@ namespace WebApp.ExercisePages
         {
             if (List01.SelectedIndex == 0)
             {
-                MessageLabel.Text = "Select a category to view its products";
+                MessageLabel.Text = "Select a team to view its players";
             }
             else
             {
                 try
                 {
+                    //Controller01 Teamsysmgr = new Controller01();
+                    //List<Entity01> Teaminfo = null;
+                    //Teaminfo = Teamsysmgr.FindByID(int.Parse(List01.SelectedValue));
+                    ////info.Sort((x, y) => x.ProductName.CompareTo(y.ProductName));
+                    //TeamInfo.DataSource = Teaminfo;
+                    //TeamInfo.DataBind();
+                    Controller01 Teamsysmgr = new Controller01();
+                    List<Entity01> Teaminfo = null;
+                    Teaminfo = Teamsysmgr.FindByID(int.Parse(List01.SelectedValue));
+                    //Teaminfo = Teamsysmgr.List();
+                    TeamInfo.DataSource = Teaminfo;
+                    TeamInfo.DataBind();
+
                     Controller02 sysmgr = new Controller02();
                     List<Entity02> info = null;
                     info = sysmgr.FindByID(int.Parse(List01.SelectedValue));

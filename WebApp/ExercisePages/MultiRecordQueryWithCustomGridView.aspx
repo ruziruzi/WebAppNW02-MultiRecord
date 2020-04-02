@@ -2,56 +2,57 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <h1> Multi Record Query with Custom GridView</h1>
     <div class="offset-2">
-        <asp:Label ID="Label1" runat="server" Text="Select an Item: "></asp:Label>&nbsp;&nbsp;   
+        <asp:Label ID="Label1" runat="server" Text="Select a team: "></asp:Label>&nbsp;&nbsp;   
         <asp:DropDownList ID="List01" runat="server"></asp:DropDownList>&nbsp;&nbsp;
         <asp:Button ID="Fetch" runat="server" Text="Fetch" 
              CausesValidation="false" OnClick="Fetch_Click"/>
         <br /><br />
         <asp:Label ID="MessageLabel" runat="server" ></asp:Label>
         <br />
+        <asp:GridView ID="TeamInfo" runat="server"></asp:GridView>
         <asp:GridView ID="List02" runat="server" 
             AutoGenerateColumns="False"
              CssClass="table table-striped" GridLines="Horizontal"
              BorderStyle="None" AllowPaging="True" OnPageIndexChanging="List02_PageIndexChanging" PageSize="5" OnSelectedIndexChanged="List02_SelectedIndexChanged">
 
             <Columns>
-                <asp:CommandField SelectText="View" ShowSelectButton="True" 
-                    ButtonType="Button" CausesValidation="false"></asp:CommandField>
-                <asp:TemplateField HeaderText="ID" Visible="True">
+                <%--<asp:CommandField SelectText="View" ShowSelectButton="True" 
+                    ButtonType="Button" CausesValidation="false"></asp:CommandField>--%>
+                <asp:TemplateField HeaderText="Name" Visible="True">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                     <ItemTemplate>
-                        <asp:Label ID="TeamID" runat="server" 
-                            Text='<%# Eval("TeamID") %>'></asp:Label>
+                        <asp:Label ID="Name" runat="server" 
+                            Text='<%# Eval("PlayerName") %>'></asp:Label>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Team">
+                <asp:TemplateField HeaderText="Age">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                     <ItemTemplate>
                         <%-- this is where your reference to the data on your
                               record is placed--%>
-                        <asp:Label ID="TeamName" runat="server" 
-                            Text='<%# Eval("TeamName") %>'></asp:Label>
+                        <asp:Label ID="Age" runat="server" 
+                            Text='<%# Eval("Age") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Coach">
+                <asp:TemplateField HeaderText="Gender">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                      <ItemTemplate>
-                        <asp:Label ID="Coach" runat="server" 
-                            Text='<%# Eval("Coach") %>'></asp:Label>
+                        <asp:Label ID="Gender" runat="server" 
+                            Text='<%# Eval("Gender") %>'></asp:Label>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="AssistantCoach">
+                <asp:TemplateField HeaderText="Medical Alert">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                      <ItemTemplate>
-                        <asp:Label ID="AssistantCoach" runat="server" 
-                            Text='<%# Eval("AssistantCoach") %>'></asp:Label>
+                        <asp:Label ID="MedicalAlert" runat="server" 
+                            Text='<%# Eval("MedicalAlertDetails") %>'></asp:Label>
                         
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="Wins">
+                <%--<asp:TemplateField HeaderText="Wins">
                     <ItemStyle HorizontalAlign="Left"></ItemStyle>
                      <ItemTemplate>
                         <asp:Label ID="Wins" runat="server" 
@@ -66,10 +67,10 @@
                             Text='<%# Eval("Losses") == null ? "each" : Eval("Losses") %>'></asp:Label>
                         
                     </ItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField>--%>
             </Columns>
             <EmptyDataTemplate>
-                whatever message string you use is printed if there is no data to display
+                No data available at this time
             </EmptyDataTemplate>
             <PagerSettings FirstPageText="Start" LastPageText="End" Mode="NumericFirstLast" PageButtonCount="3" />
         </asp:GridView>

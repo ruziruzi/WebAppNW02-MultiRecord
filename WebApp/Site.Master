@@ -71,6 +71,11 @@
                                             style="color:black" runat="server">
                                             Multi Record Query with Custom GridView
                                     </a>
+                                    <a class="dropdown-item"
+                                            href="~/ExercisePages/Exercise9.aspx"
+                                            style="color:black" runat="server">
+                                            Exercise 9
+                                    </a>
                                     
                                 </div>
                             </li>

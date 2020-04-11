@@ -14,9 +14,9 @@ namespace DBSystem.ENTITIES
     {
         private string gender;
         [Key]
-        //public int PlayerID { get; set; }
-        //public int GuardianID { get; set; }
-        //public int TeamID { get; set; }
+        public int PlayerID { get; set; }
+        public int? GuardianID { get; set; }
+        public int? TeamID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set;}
         public int Age { get; set; }
@@ -33,12 +33,24 @@ namespace DBSystem.ENTITIES
                 }
             } 
         }
-        //public string AlbertaHealthCareNumber { get; set; }
+        public string AlbertaHealthCareNumber { get; set; }
         public string MedicalAlertDetails { get; set; }
         [NotMapped]
         public string PlayerName {
             get {
                 return LastName + ", " + FirstName;
+            }
+        }
+
+        public string FullName {
+            get {
+                return FirstName + " " + LastName;
+            }
+        }
+
+        public string PlayerAndID {
+            get {
+                return FullName + "(" + PlayerID + ")";
             }
         }
     }

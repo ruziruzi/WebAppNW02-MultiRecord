@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MultiRecordQueryWithCustomGridView.aspx.cs" Inherits="WebApp.ExercisePages.MultiRecordQueryWithCustomGridView" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <h1> Multi Record Query with Custom GridView</h1>
-    <div class="offset-2">
+    <div class="offset-sm-0">
         <asp:Label ID="Label1" runat="server" Text="Select a team: "></asp:Label>&nbsp;&nbsp;   
         <asp:DropDownList ID="List01" runat="server"></asp:DropDownList>&nbsp;&nbsp;
         <asp:Button ID="Fetch" runat="server" Text="Fetch" 

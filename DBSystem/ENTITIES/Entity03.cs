@@ -23,7 +23,12 @@ namespace DBSystem.ENTITIES
         //public string Address { get; set; }
         //public string City { get; set; }
         //public string PostalCode { get; set; }
-
+        [NotMapped]
+        public string GuardianName {
+            get {
+                return FirstName + " " + LastName;
+            }
+        }
         //[NotMapped]
         //public string CompanyAddress
         //{

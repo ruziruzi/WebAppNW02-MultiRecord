@@ -37,7 +37,7 @@ namespace DBSystem.BLL
             }
         }
 
-        public int Add(Entity02 item)
+        public int Player_Add(Entity02 item)
         {
             using (var context = new Context())
             {
@@ -47,7 +47,7 @@ namespace DBSystem.BLL
             }
         }
 
-        public int Update(Entity02 item)
+        public int Player_Update(Entity02 item)
         {
             using (var context = new Context())
             {
@@ -56,7 +56,7 @@ namespace DBSystem.BLL
             }
         }
 
-        public int Delete(int playerid)
+        public int Player_Delete(int playerid)
         {
             using (var context = new Context())
             {

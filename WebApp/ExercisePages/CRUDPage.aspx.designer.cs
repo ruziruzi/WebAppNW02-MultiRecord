@@ -141,13 +141,22 @@ namespace WebApp.ExercisePages
         protected global::System.Web.UI.WebControls.Label Label7;
 
         /// <summary>
-        /// Gender control.
+        /// RadioMale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Gender;
+        protected global::System.Web.UI.WebControls.RadioButton RadioMale;
+
+        /// <summary>
+        /// RadioFemale control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioFemale;
 
         /// <summary>
         /// Label8 control.

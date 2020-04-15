@@ -83,13 +83,20 @@
 
     <div class="row">
         <div class="col-md-4 text-right">
+            <asp:Label ID="Label7" runat="server" Text="Gender"></asp:Label>
+        </div>
+        <div class="col-md-4 text-left">
+            <asp:RadioButton ID="RadioMale" Text="Male" runat="server" GroupName="RadioGender" />
+            <asp:RadioButton ID="RadioFemale" Text="Female" runat="server" GroupName="RadioGender" />
+        </div>
+        <%--<div class="col-md-4 text-right">
             <asp:Label ID="Label7" runat="server" Text="Gender"
                 AssociatedControlID="Gender">
             </asp:Label>
         </div>
         <div class="col-md-4 text-left">
             <asp:TextBox ID="Gender" runat="server" />
-        </div>
+        </div>--%>
     </div>
     
     <div class="row">

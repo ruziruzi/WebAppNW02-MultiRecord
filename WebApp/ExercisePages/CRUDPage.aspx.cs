@@ -58,7 +58,15 @@ namespace WebApp.ExercisePages
                         FirstName.Text = info.FirstName;
                         LastName.Text = info.LastName;
                         Age.Text = info.Age.ToString();
-                        Gender.Text = info.Gender;
+                        if (info.Gender == "M")
+                        {
+                            RadioMale.Checked = true;
+                        }
+                        else if (info.Gender == "F")
+                        {
+                            RadioFemale.Checked = true;
+                        }
+                        //Gender.Text = info.Gender;
                         AlbertaHealthcareNumber.Text = info.AlbertaHealthCareNumber;
                         MedicalAlertDetails.Text = info.MedicalAlertDetails == null ? "" : info.MedicalAlertDetails;
                         if (info.TeamID.HasValue)
@@ -129,7 +137,7 @@ namespace WebApp.ExercisePages
                 info.Sort((x,y) => x.GuardianName.CompareTo(y.GuardianName));
                 GuardianList.DataSource = info;
                 GuardianList.DataTextField = nameof(Entity03.GuardianName);
-                GuardianList.DataTextField = nameof(Entity03.GuardianID);
+                GuardianList.DataValueField = nameof(Entity03.GuardianID);
                 GuardianList.DataBind();
                 GuardianList.Items.Insert(0,"Select . . . ");
             }
@@ -142,6 +150,14 @@ namespace WebApp.ExercisePages
 
         protected void Validation(object sender, EventArgs e)
         {
+            if (GuardianList.SelectedIndex == 0)
+            {
+                errormsgs.Add("Please select a guardian!");
+            }
+            if (TeamList.SelectedIndex == 0)
+            {
+                errormsgs.Add("Please select a team!");
+            }
             if (string.IsNullOrEmpty(FirstName.Text))
             {
                 errormsgs.Add("First Name is required!");
@@ -161,7 +177,7 @@ namespace WebApp.ExercisePages
                 {
                     if (age < 6 || age > 14)
                     {
-                        errormsgs.Add("Age must be between 4 and 16!");
+                        errormsgs.Add("Age must be between 4 and 14!");
                     }
                 }
                 else
@@ -169,6 +185,11 @@ namespace WebApp.ExercisePages
                     errormsgs.Add("Age must be a real number!");
                 }
             }
+            if (RadioMale.Checked == false && RadioFemale.Checked == false)
+            {
+                errormsgs.Add("You must select a gender!");
+            }
+            
             if (string.IsNullOrEmpty(AlbertaHealthcareNumber.Text))
             {
                 errormsgs.Add("Alberta Healthcare Number is Required!");
@@ -202,7 +223,8 @@ namespace WebApp.ExercisePages
             FirstName.Text = "";
             LastName.Text = "";
             Age.Text = "";
-            Gender.Text = "";
+            RadioMale.Checked = false;
+            RadioFemale.Checked = false;
             AlbertaHealthcareNumber.Text = "";
             MedicalAlertDetails.Text = "";
         }
@@ -221,22 +243,25 @@ namespace WebApp.ExercisePages
                     Controller02 sysmgr = new Controller02();
                     Entity02 item = new Entity02();
                     
-                    if (TeamList.SelectedIndex == 0)
-                    {
-                        item.TeamID = null;
-                    }
-                    else
-                    {
-                        item.TeamID = int.Parse(TeamList.SelectedValue);
-                    }
-                    item.GuardianID = int.Parse(GuardianList.SelectedValue);
+                    
                     item.FirstName = FirstName.Text.Trim();
                     item.LastName = LastName.Text.Trim();
+                    item.TeamID = int.Parse(TeamList.SelectedValue);
+                    item.GuardianID = int.Parse(GuardianList.SelectedValue);
+                    
                     item.Age = int.Parse(Age.Text);
-                    item.Gender = string.IsNullOrEmpty(Gender.Text) ? null : Gender.Text;
+                    //item.Gender = string.IsNullOrEmpty(Gender.Text) ? null : Gender.Text;
+                    if (RadioMale.Checked)
+                    {
+                        item.Gender = "M";
+                    }
+                    else if (RadioFemale.Checked)
+                    {
+                        item.Gender = "F";
+                    }
                     item.AlbertaHealthCareNumber = AlbertaHealthcareNumber.Text;
                     item.MedicalAlertDetails = string.IsNullOrEmpty(MedicalAlertDetails.Text) ? null : MedicalAlertDetails.Text;
-                    int newID = sysmgr.Add(item);
+                    int newID = sysmgr.Player_Add(item);
                     PlayerID.Text = newID.ToString();
                     errormsgs.Add("Record has been added!");
                     LoadMessageDisplay(errormsgs, "alert alert-success");
@@ -273,23 +298,24 @@ namespace WebApp.ExercisePages
                 {
                     Controller02 sysmgr = new Controller02();
                     Entity02 item = new Entity02();
-
-                    if (TeamList.SelectedIndex == 0)
-                    {
-                        item.TeamID = null;
-                    }
-                    else
-                    {
-                        item.TeamID = int.Parse(TeamList.SelectedValue);
-                    }
+                    item.PlayerID = int.Parse(PlayerID.Text);
+                    item.TeamID = int.Parse(TeamList.SelectedValue);
                     item.GuardianID = int.Parse(GuardianList.SelectedValue);
                     item.FirstName = FirstName.Text.Trim();
                     item.LastName = LastName.Text.Trim();
                     item.Age = int.Parse(Age.Text);
-                    item.Gender = string.IsNullOrEmpty(Gender.Text) ? null : Gender.Text;
+                    //item.Gender = Gender.Text;
+                    if (RadioMale.Checked)
+                    {
+                        item.Gender = "M";
+                    }
+                    else if (RadioFemale.Checked)
+                    {
+                        item.Gender = "F";
+                    }
                     item.AlbertaHealthCareNumber = AlbertaHealthcareNumber.Text;
                     item.MedicalAlertDetails = string.IsNullOrEmpty(MedicalAlertDetails.Text) ? null : MedicalAlertDetails.Text;
-                    int rowsaffected = sysmgr.Update(item);
+                    int rowsaffected = sysmgr.Player_Update(item);
                     if (rowsaffected > 0)
                     {
                         errormsgs.Add("Record has been updated");
@@ -329,7 +355,7 @@ namespace WebApp.ExercisePages
                 try
                 {
                     Controller02 sysmgr = new Controller02();
-                    int rowsaffected = sysmgr.Delete(id);
+                    int rowsaffected = sysmgr.Player_Delete(id);
                     if (rowsaffected > 0)
                     {
                         errormsgs.Add("Record has been deleted");
